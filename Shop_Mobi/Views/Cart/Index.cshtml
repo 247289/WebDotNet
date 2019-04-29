@@ -1,0 +1,130 @@
+﻿@model List<Shop_Mobi.Models.CartItem>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .breadcrumbs .breadcrumb li a:after {
+        top: 10px;
+        left: 76px;
+    }
+
+    #btn_payment:hover {
+        background-color: darkorange;
+        color: white !important;
+        /*border: 0px; height:25px; width: 100px;*/
+    }
+
+    #_payment:hover {
+        color: white;
+    }
+</style>
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="~/Home/Index">Trang chủ</a></li>
+                <li class="active">Giỏ hàng</li>
+            </ol>
+        </div>
+        <div class="table-responsive cart_info">
+            @if (Model == null || Model.Count == 0)
+            {
+                <table class="table table-condensed">
+                    <thead>
+                        <tr class="cart_menu">
+                            <td class="image">Sản phẩm</td>
+                            <td class="description"></td>
+                            <td class="price">Giá</td>
+                            <td class="quantity">Số lượng</td>
+                            <td class="total">Tổng giá</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cart_product" colspan="5">
+                                <p class="text-info text-center">
+                                    <a href="~/Home/Index">Giỏ hàng của bạn rỗng!</a>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <table class="table table-condensed">
+                    <thead>
+                        <tr class="cart_menu">
+                            <td class="image">Sản phẩm</td>
+                            <td class="description"></td>
+                            <td class="price">Giá</td>
+                            <td class="quantity">Số lượng</td>
+                            <td class="total">Tổng giá</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                {
+                            <tr>
+                                <td class="cart_product">
+                                    <a target="_blank" href="@Url.Action("Details", "Home", new { id = item.sanpham.id })">
+                                        <img src="@item.sanpham.tbl_anh.ToList()[0].duongdan" alt="image" width="110" height="110">
+                                    </a>
+                                </td>
+                                <td class="cart_description">
+                                    <h4><a target="_blank" href="@Url.Action("Details", "Home", new { id = item.sanpham.id })">@item.sanpham.ten</a></h4>
+                                    <p>Hãng: @item.sanpham.tbl_nhasanxuat.ten</p>
+                                </td>
+                                <td class="cart_price">
+                                    <p>@item.sanpham.gia.GetValueOrDefault().ToString("N0") VNĐ</p>
+                                </td>
+                                <td class="cart_quantity">
+                                    <div class="cart_quantity_button">
+                                        <form action="@Url.Action("SuaSoLuong")" method="get">
+                                            <input type="hidden" name="id" value="@item.sanpham.id" /><br />
+                                            <input type="number" min="1" step="1" name="soluongmoi" value="@item.soluong" /><br />
+                                            <button type="submit" class="btn btn-primary btn-sm"> Cập nhật </button>
+                                        </form>
+                                    </div>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price">
+                                        @item.thanhtien.ToString("#,##0").Replace(',', '.') VNĐ
+                                    </p>
+                                </td>
+                                <td class="cart_delete">
+                                    <a class="cart_quantity_delete" href="@Url.Action("XoaKhoiGio",new { id = item.sanpham.id})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');"><i class="fa fa-times"></i></a>
+                                </td>
+
+                            </tr>
+                        }
+                        <tr>
+                            <td class="cart_total_price" colspan="5" align="right">
+                                Thành tiền: @Model.Sum(m => m.thanhtien).ToString("#,##0").Replace(',', '.') VNĐ
+                                @*<p class="cart_total_price">
+                                        Thành tiền: @Model.Sum(m => m.thanhtien).ToString("#,##0").Replace(',', '.') VNĐ
+                                    </p>*@
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+
+
+        </div>
+
+        <div class="review-payment">
+            <p style="text-align: right; ">
+                <button class="btn" id="btn_payment" onclick="">
+                    <a href="~/Cart/Payment" id="_payment" target="_blank" style="text-decoration: none; ">Thanh toán</a>
+                </button>
+            </p>
+        </div>
+
+    </div>
+</section> <!--/#cart_items-->

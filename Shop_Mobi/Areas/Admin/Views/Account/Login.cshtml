@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section id="form">
+    <!--form-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form">
+                    <!--login form-->
+                    <h2>Login to your account</h2>
+                    <form action="Login" method="post">
+                        <input type="text" name="user" value="" placeholder="Nhập vào tên tài khoản của bạn" />
+                        <input type="password" name="pass" value="" placeholder="Nhập vào mật khẩu của bạn" />
+                        <span>
+                            <input type="checkbox" class="checkbox">
+                            Giữ tôi luôn đăng nhập
+                        </span>
+                        <button type="submit" class="btn btn-default">Đăng nhập</button>
+                    </form>
+                </div><!--/login form-->
+            </div>
+            <div class="col-sm-1">
+                <h2 class="or">HOẶC</h2>
+            </div>
+            <div class="col-sm-4">
+                <div class="signup-form">
+                    <!--sign up form-->
+                    <h2>Tạo tài khoản mới!</h2>
+                    <form action="Register" method="post">
+                        <input type="text" name="user" placeholder="Tên tài khoản" />
+                        <input type="email" name="email" placeholder="Email" />
+                        <input type="password" name="pass" placeholder="Mật khẩu" />
+                        <button type="submit" class="btn btn-default">Đăng ký</button>
+                    </form>
+                </div><!--/sign up form-->
+            </div>
+        </div>
+    </div>
+</section><!--/form-->
+
+<script>
+    $(document).ready(function () {
+        $("#slider").hide();
+    });
+</script>
+

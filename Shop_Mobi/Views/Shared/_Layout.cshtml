@@ -1,0 +1,354 @@
+﻿@{
+    var acc = (Shop_Mobi.Databases.tbl_taikhoan)Session["Users"];
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title> @ViewBag.Title | Mobi-shop, tablet và các dịch vụ hỗ trợ</title>
+    <link href="~/Resources/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Resources/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Resources/css/animate.css" rel="stylesheet" />
+    <link href="~/Resources/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="~/Resources/css/price-range.css" rel="stylesheet" />
+    <link href="~/Resources/css/main.css" rel="stylesheet" />
+    <link href="~/Resources/css/responsive.css" rel="stylesheet" />
+
+    <link rel="icon" href="~/Resources/imgs/home/icon.PNG" type="image/x-icon"/>
+
+    <style>
+        #panel-heading:hover {
+            background-color: yellow;
+        }
+    </style>
+    <style>
+        #brans-heading:hover {
+            background-color: yellow;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head><!--/head-->
+<body>
+    <header id="header">
+        <!--header-->
+        <div class="header_top">
+            <!--header_top-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="contactinfo">
+                            <ul class="nav nav-pills">
+                                <li><a href=""><i class="fa fa-phone"></i> +84 353 237 025</a></li>
+                                <li><a href=""><i class="fa fa-envelope"></i> mr.jerry0997@gmail.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="social-icons pull-right">
+                            <ul class="nav navbar-nav"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header_top-->
+
+        <div class="header-middle">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="logo pull-left">
+                            <a href="@Url.Action("Index","Home")"><img src="~/Resources/imgs/home/logo.png" alt="Logo.png" /></a>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="shop-menu pull-right">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    @if (Session["Users"] != null)
+                                    {
+                                        <i class="fa user_info"></i>@acc.tentaikhoan
+                                    }
+                                    else
+                                    {
+                                        <a href="">
+                                            <i class="fa btn-info"></i>Tài khoản
+                                        </a>
+                                    }
+                                </li>
+                                <li><a href=""><i class="fa"></i> Yêu Thích</a></li>
+                                <li><a href="@Url.Action("News", "Home")"><i class="fa"></i> Tin Tức công nghệ</a></li>
+                                @if (Session["Tsoluong"] == null)
+                                {
+                                    <li><a href="/Cart/Index"><i class="fa"></i> Giỏ Hàng(0)</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Cart/Index"><i class="fa"></i> Giỏ Hàng(@Session["Tsoluong"])</a></li>}
+                                @if (Session["Users"] != null)
+                                {
+                                    <li><a href="/Admin/Account/Logout"><i class="fa fa-envelope"></i>Đăng Xuất</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Admin/Account/Login"><i class="fa fa-envelope"></i>Đăng Nhập</a></li>}
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div><!--/header-middle-->
+
+
+        <div class="header-bottom" style="position: relative; display: block; background: #ffd800;">
+            <!--header-bottom-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="mainmenu pull-left">
+                            <ul class="nav navbar-nav collapse navbar-collapse">
+                                <li><a href="/">Trang Chủ</a></li>
+                                <li><a href="/Home/Category/?id=1">Điện Thoại</a></li>
+                                <li><a href="/Home/Category/?id=2">Tablet</a></li>
+                                <li><a href="/Home/Category/?id=3">Phụ Kiện</a></li>
+                                <li><a href="/Home/Category/?id=5">Khuyến Mại</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <form action="/Home/Search" method="get" class="searchform">
+                            <input name="key" placeholder="Từ Khóa" type="text">
+                            <button type="submit" class="btn btn-default"><img src="~/Resources/imgs/home/searchicon.png" /></button>
+
+                        </form>
+                        @*<div class="search_box pull-right">
+                                <input type="text" placeholder="Search" />
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-bottom-->
+    </header><!--/header-->
+
+    <section id="slider">
+        <!--slider-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#slider-carousel" data-slide-to="1"></li>
+                            <li data-target="#slider-carousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="col-sm-3">
+                                    <h1><span>Mobi</span>-Shop</h1>
+                                    <h2>Bảo Hành 12 Tháng</h2>
+                                    <p></p>
+                                    <button type="button" class="btn btn-default get">Mua Ngay</button>
+                                </div>
+                                <div class="col-sm-8">
+                                    <br />
+                                    <br />
+                                    <a href="#">
+                                        <img src="https://cdn.didongthongminh.vn/upload_images/2018/06/mi8-2.png" class="girl img-responsive" alt="" height="420" />
+
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-sm-3">
+                                    <h1><span>GT</span>-Mobile</h1>
+                                    <h2>Mua Hàng Dễ Dàng.</h2>
+                                    <p></p>
+                                    <button type="button" class="btn btn-default get">Mua Ngay</button>
+                                </div>
+                                <div class="col-sm-8">
+                                    <br />
+                                    <br />
+                                    <a href="#">
+                                        <img src="https://cdn.didongthongminh.vn/upload_images/2018/06/xiaomi-redmi-note-5-pro.jpg" class="girl img-responsive" alt="" height="420" />
+
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="col-sm-3">
+                                    <h1><span>GT</span>-Mobile</h1>
+                                    <h2>Giao Hàng Miễn Phí.</h2>
+                                    <p> </p>
+                                    <button type="button" class="btn btn-default get">Mua Ngay</button>
+                                </div>
+                                <div class="col-sm-8">
+                                    <br />
+                                    <br />
+                                    <a href="#">
+                                        <img src="https://cdn.didongthongminh.vn/upload_images/2018/06/iphone8plus.png" class="girl img-responsive" alt="" height="420" />
+
+                                    </a>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section><!--/slider-->
+
+    @RenderBody()
+    <br />
+    <br />
+    <footer id="footer">
+        <!--Footer-->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="companyinfo">
+                            <h2><span>Mobi</span>-Shop</h2>
+                            <p>Ở đâu có điện thoại, ở đó có GT.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="col-sm-3">
+                            <div class="single-widget">
+                                <h2>Hỏi Đáp</h2>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li>Mua hàng online.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="single-widget">
+                                <h2>Đổi Trả Hàng</h2>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li>Dễ dàng lên đến 45 ngày.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="single-widget">
+                                <h2>Miễn Phí</h2>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li>Vận chuyển toàn quốc.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="address">
+                            <img src="~/Resources/imgs/home/map.png" alt="" />
+                            <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Dịch Vụ</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="">Trợ Giúp Online</a></li>
+                                <li><a href="">Liên hệ</a></li>
+                                <li><a href="">Tình Trạng Đơn Hàng.</a></li>
+                                <li><a href="">FAQ’s</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Chính Sách</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="">Bảo Hành</a></li>
+                                <li><a href="">Đổi Trả</a></li>
+                                <li><a href="">Mua Hàng Online</a></li>
+                                <li><a href="">Phương Thức Thanh Toán</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Thông Tin</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="">Giới thiệu công ty</a></li>
+                                <li><a href="">Hệ thống cửa hàng</a></li>
+                                <li><a href="">Tuyển dụng</a></li>
+                                <li><a href="">Góp ý, khiếu nại</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <div class="single-widget">
+                            <h2>About Shopper</h2>
+                            <form action="" method="post" class="searchform">
+                                <input type="text" placeholder="Địa chỉ e-mail" />
+                                <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+                                <p>Nhận những thông tin cập nhật sớm nhất <br />từ chúng tôi...</p>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="pull-left">Copyright © 2019 Mobi-shop Inc.</p>
+                    <p class="pull-right">thiết kế bởi <span>Mr. Jerrier</span></p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!--/Footer-->
+    <script src="~/Resources/js/jquery.js"></script>
+    <script src="~/Resources/js/bootstrap.min.js"></script>
+    <script src="~/Resources/js/jquery.scrollUp.min.js"></script>
+    <script src="~/Resources/js/price-range.js"></script>
+    <script src="~/Resources/js/jquery.prettyPhoto.js"></script>
+    <script src="~/Resources/js/main.js"></script>
+</body>
+</html>

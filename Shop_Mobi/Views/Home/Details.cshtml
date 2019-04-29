@@ -1,0 +1,342 @@
+﻿@model Shop_Mobi.Databases.tbl_sanpham
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listRC = (List<Shop_Mobi.Databases.tbl_sanpham>)ViewBag.RecommendedItems;
+    var a = new Shop_Mobi.Models.Tbl_sanpham();
+    var b = new Shop_Mobi.Models.Tbl_nhasanxuat();
+}
+<style type="text/css" media="all">
+    .list_carousel {
+        width: 100%;
+        height: 148px;
+        position: relative;
+        float: left;
+        overflow: hidden;
+    }
+
+        .list_carousel ul {
+            margin: 0;
+            width: 100%;
+            padding: 0;
+            list-style: none;
+            display: block;
+        }
+
+        .list_carousel li {
+            display: inline-block;
+            padding: 0px 10px;
+        }
+
+            .list_carousel li img {
+                float: left;
+                width: 96px;
+                border: solid 1px #949494;
+            }
+
+            .list_carousel li a {
+                text-decoration: none;
+            }
+
+                .list_carousel li a h3 {
+                    color: #835410;
+                    text-align: center;
+                    font-weight: 500;
+                    margin-top: 10px;
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                    text-transform: uppercase;
+                }
+
+            .list_carousel li:hover {
+            }
+
+        .list_carousel.responsive {
+            width: auto;
+            margin-left: 0;
+        }
+
+    .clearfix {
+        float: none;
+        clear: both;
+    }
+
+    .pager {
+        float: left;
+        width: 320px;
+        text-align: center;
+    }
+
+        .pager a {
+            margin: 0 5px;
+            text-decoration: none;
+        }
+
+            .pager a.selected {
+                text-decoration: underline;
+            }
+
+    .timer {
+        background-color: #999;
+        height: 6px;
+        width: 0px;
+    }
+
+    .prev13 {
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        z-index: 10;
+        background: url(../public/default/images/leftArrow.png) no-repeat;
+        top: 50px;
+        left: 0px;
+    }
+
+    .next13 {
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        z-index: 10;
+        background: url(../public/default/images/rightArrow.png) no-repeat;
+        top: 50px;
+        right: 0px;
+    }
+
+    .caroufredsel_wrapper, #foo3 {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .app-figure {
+        margin-bottom: 50px !important;
+        position: relative;
+    }
+
+        .app-figure:before, .app-figure:after {
+            position: absolute;
+            z-index: 1000;
+            content: '';
+        }
+
+        .app-figure:before {
+            width: 50%;
+            bottom: -25px;
+            left: 25%;
+            height: 1px;
+            background-color: #e5e5e5;
+        }
+
+        .app-figure:after {
+            width: 39px;
+            height: 11px;
+            padding: 0 8px;
+            bottom: -30px;
+            left: 45%;
+            background: #fff url(../public/default/images/icon-line-detail.png) no-repeat center center;
+        }
+</style>
+
+<section class="container">
+    <br />
+    <div class="row">
+        @{Html.RenderAction("CategoryProduct", "Category");}
+
+        <div class="product-details">
+            <!--product-details-->
+            <div class="col-sm-5">
+                <div class="view-product">
+                    <img id="AnhLon" src="@a.getImg(Model.id)[0]" alt="Product.png" width="160">
+                    @*<h3>ZOOM</h3>*@
+                </div>
+
+                <div id="similar-product" class="carousel slide" data-ride="carousel">
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <a href=""><img src="@a.getImg(Model.id)[0]" alt="" style="width:84px;"></a>
+                            <a href=""><img src="@a.getImg(Model.id)[1]" alt="" style="width:84px;"></a>
+                            <a href=""><img src="@a.getImg(Model.id)[2]" alt="" style="width:84px;"></a>
+                        </div>
+                        <div class="item">
+                            <a href=""><img src="@a.getImg(Model.id)[0]" alt="" style="width:84px;"></a>
+                            <a href=""><img src="@a.getImg(Model.id)[1]" alt="" style="width:84px;"></a>
+                            <a href=""><img src="@a.getImg(Model.id)[2]" alt="" style="width:84px;"></a>
+                        </div>
+                        <div class="item">
+                            <a href=""><img src="@a.getImg(Model.id)[0]" alt="" style="width:84px;"></a>
+                            <a href=""><img src="@a.getImg(Model.id)[1]" alt="" style="width:84px;"></a>
+                            <a href=""><img src="@a.getImg(Model.id)[2]" alt="" style="width:84px;"></a>
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left item-control" href="#similar-product" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="right item-control" href="#similar-product" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="product-information">
+                    <!--/product-information-->
+                    <img src="~/Resources/new.jpg" class="newarrival" alt="">
+                    <h2>@Model.ten</h2>
+                    <p>Nhà Sản Xuất: @b.getName(Model.id_nsx).ten</p>
+                    <img src="~/Resources/rating.png" alt="">
+                    <p><b>Số lượng:</b> @(Model.soluong.GetValueOrDefault() > 0 ? "Có " + Model.soluong.Value.ToString() + " sản phẩm." : "Tạm hết hàng.")</p>
+                    <p><b>Tình trạng: </b>Mới</p>
+                    <p><b>Brand:</b> GT-mobile</p>
+                    <span>
+                        <span>Giá: @(Model.gia.GetValueOrDefault() > 0 ? Model.gia.Value.ToString("N0") + " Đ" : "Liên Hệ")</span>
+                        <br />
+                        <label>Số lượng:</label>
+                        <input type="number" min="1" value="1" id="num-of-product">
+                        <a class="btn btn-success btn-sm" href="@Url.Action("AddItem", "Cart", new { id = Url.RequestContext.RouteData.Values["id"] })">
+                            <i class="fa fa-shopping-cart"></i> Thêm vào giỏ
+                        </a>
+                    </span>
+                    @*<a href=""><img src="images/product-details/share.png" class="share img-responsive" alt=""></a>*@
+                </div><!--/product-information-->
+            </div>
+        </div><!--/product-details-->
+
+        <div class="category-tab shop-details-tab">
+            <!--category-tab-->
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#details" data-toggle="tab">Chi Tiết</a></li>
+                    <li class=""><a href="#reviews" data-toggle="tab">Đánh Giá</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active fade in" id="details">
+                    <div class="row">
+                        <h3>---- Thông Số Kỹ Thuật</h3>
+                        <hr />
+                        <div class="col-sm-10">
+                            <table class="table table-bordered table-striped table-hover">
+                                <tr>
+                                    <th>Tên</th>
+                                    <td>@Model.ten</td>
+                                </tr>
+                                <tr>
+                                    <th>Nhà Sản Xuất</th>
+                                    <td>@b.getName(Model.id_nsx).ten</td>
+                                </tr>
+                                <tr>
+                                    <th>CPU</th>
+                                    <td>@Model.CPU</td>
+                                </tr>
+                                <tr>
+                                    <th>ROM</th>
+                                    <td>@Model.ROM</td>
+                                </tr>
+                                <tr>
+                                    <th>RAM</th>
+                                    <td>@Model.RAM</td>
+                                </tr>
+                                <tr>
+                                    <th>Camera</th>
+                                    <td>Trước: @Model.camera_truoc mpx, Sau: @Model.camera_sau</td>
+                                <tr>
+                                    <th>Màn Hình</th>
+                                    <td>@Model.manhinh Inc</td>
+                                </tr>
+                                <tr>
+                                    <th>Pin</th>
+                                    <td>@Model.pin.GetValueOrDefault() mAh</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="reviews">
+                    <div class="col-sm-12">
+                        <ul>
+                            <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
+                            <li><a href=""><i class="fa fa-clock-o"></i>@DateTime.Now.ToShortTimeString()</a></li>
+                            <li><a href=""><i class="fa fa-calendar-o"></i>@DateTime.Now.Date.ToShortDateString()</a></li>
+                        </ul>
+                        <p><b>Bình Luận</b></p>
+
+                        <form action="#">
+                            <span>
+                                <input placeholder="Your Name" type="text">
+                                <input placeholder="Email Address" type="email">
+                            </span>
+                            <textarea name=""></textarea>
+                            <b>Rating: </b> <img src="~/Resources/imgs/product-details/rating.png" alt="">
+                            <button type="button" class="btn btn-default pull-right">
+                                Submit
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div><!--/category-tab-->
+
+        <div class="recommended_items">
+            <!--recommended_items-->
+            <h2 class="title text-center">Sản Phẩm Cùng Loại</h2>
+
+            <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        @foreach (var r_item in listRC)
+                        {
+                            <a href="/Home/Details/@r_item.id">
+                                <div class="col-md-3">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <img src="@r_item.tbl_anh.ToList()[0].duongdan" alt="" height="260">
+                                                <h2>@r_item.gia.GetValueOrDefault().ToString("N0") Đ</h2>
+                                                <p>@r_item.ten</p>
+                                                <a class="btn btn-default add-to-cart" href="/Cart/AddItem/@Model.id"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                    <div class="item">
+
+                        @foreach (var r_item in listRC)
+                        {
+                            <a href="/Home/Details/@r_item.id">
+                                <div class="col-md-3">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <img src="@r_item.tbl_anh.ToList()[0].duongdan" alt="" height="260">
+                                                <h2>@r_item.gia.GetValueOrDefault().ToString("N0") Đ</h2>
+                                                <p>@r_item.ten</p>
+                                                <a class="btn btn-default add-to-cart" href="/Cart/AddItem/@r_item.id"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                </div>
+                <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+        </div><!--/recommended_items-->
+        <!--submit number of items to cart-->
+
+    </div>
+</section>

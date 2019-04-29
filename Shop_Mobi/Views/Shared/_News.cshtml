@@ -1,0 +1,56 @@
+﻿@model PagedList.IPagedList<Shop_Mobi.Databases.tbl_news>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Tin tức công nghệ";
+    var list = ViewBag.Newlist;
+}
+<section class="container">
+    <br />
+    <div class="row">
+        @{ Html.RenderAction("CategoryProduct", "Category");}
+        <div class="col-sm-9 ">
+
+            <div class="blog-post-area">
+                <h2 class="title text-center">Tin tức công nghệ</h2>
+                @foreach (var item in list)
+                {
+                    <div class="single-blog-post">
+
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                                <a href="">
+                                    <img src="@item.anh" alt="" style="width:400px; height:225px;">
+                                </a>
+                            </div>
+                            <div class="col-sm-6">
+                                <h3><b>@item.tieude</b></h3>
+                                <div class="post-meta">
+                                    <ul>
+                                        <li><i class="fa fa-user"></i> @item.ngaydang</li>
+                                    </ul>
+                                </div>
+                                <p>@item.noidung</p>
+                                <a class="btn btn-primary" href="" style="float: right">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="pagination-area">
+                    @Html.PagedListPager(Model, page => Url.Action("News", new { page }))
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("#slider").hide();
+    });
+</script>

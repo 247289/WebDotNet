@@ -1,0 +1,158 @@
+﻿@model PagedList.IPagedList<Shop_Mobi.Models.Tbl_sanpham>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Trang chủ | WebSite Quảng bá điện thoại di động";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listImg = (Dictionary<int, string>)ViewBag.Anh;
+    bool _first = true;
+    var a = new Shop_Mobi.Models.Tbl_nhasanxuat();
+    //
+    int i = 0;
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <!--category-->
+            @{Html.RenderAction("CategoryProduct", "Category"); }
+            <!--main-->
+            <div class="col-sm-9 padding-right">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">Phổ biến</h2>
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        @*http:// via.placeholder.com/ 230x300*@
+
+                                        <img src="@listImg[i] " alt="" />
+
+                                        <h2>@item.gia.GetValueOrDefault().ToString("N0") VNĐ</h2>
+                                        <p>@item.ten</p>
+                                        <a href="#" class="btn btn-default add-to-cart">
+                                            <i class="fa fa-shopping-cart">
+                                            </i>Thêm vào giỏ hàng
+                                        </a>
+                                    </div>
+                                    <a href="/Home/Details/@item.id">
+                                        <div class="product-overlay">
+                                            <div class="overlay-content">
+                                                <p>@item.ten</p>
+                                                <h2>@item.gia.GetValueOrDefault().ToString("N0") VNĐ</h2>
+                                                <p>Màn Hình: @item.manhinh innches</p>
+                                                <p>CPU: @item.CPU</p>
+                                                <p>RAM: @item.RAM GB, ROM: @item.ROM GB</p>
+                                                <p>Camera: @item.camera_sau megapixels</p>
+                                                <p>Selfie: @item.camera_truoc megapixels</p>
+                                                <p>Pin: @item.pin mAh</p>
+                                                <a href="/Cart/AddItem/@item.id" class="btn btn-default add-to-cart">
+                                                    <i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Thêm vào yêu thích</a></li>
+                                        <li><a href="/Home/Details/@item.id"><i class="fa fa-plus-square"></i>Chi tiết</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        i++;
+                    }
+
+                </div><!--features_items-->
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                <!---->
+                <div class="category-tab">
+                    <!--category-tab-->
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs">
+
+                            @{
+                                foreach (var _pItem in a.getName())
+                                {
+                                    if (_first)
+                                    {
+                                        <li class="active"><a href="#@_pItem.id" data-toggle="tab">@_pItem.ten</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="#@_pItem.id" data-toggle="tab">@_pItem.ten</a></li>
+                                    }
+                                    _first = false;
+                                }
+                                _first = true;
+                            }
+                        </ul>
+                    </div>
+                    @*//*@
+                    <div class="tab-content">
+                        @{
+                            foreach (var _pItem in a.getName())
+                            {
+                                if (_first)
+                                {
+                                    <div class="tab-pane fade active in" id="@_pItem.id">
+                                        @foreach (var item in a.GetTop(_pItem.id, 4))
+                                        {
+                                            <div class="col-sm-3">
+                                                <div class="product-image-wrapper">
+                                                    <div class="single-products">
+                                                        <div class="productinfo text-center">
+                                                            <img src="@item.getImg(item.id)[0]" alt="photos.png">
+                                                            <h2>@(item.gia.GetValueOrDefault() > 0 ? item.gia.GetValueOrDefault().ToString("N0") + " Đ" : "Liên Hệ")</h2>
+                                                            <p>@_pItem.ten</p>
+                                                            <a href="/Cart/AddItem/@_pItem.id" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="tab-pane fade" id="@_pItem.id">
+                                        @foreach (var item in a.GetTop(_pItem.id, 4))
+                                        {
+                                            <div class="col-sm-3">
+                                                <div class="product-image-wrapper">
+                                                    <div class="single-products">
+                                                        <div class="productinfo text-center">
+                                                            <img src="@item.getImg(item.id)[0]" alt="photos.png">
+                                                            <h2>@(item.gia.GetValueOrDefault() > 0 ? item.gia.GetValueOrDefault().ToString("N0") + " Đ" : "Liên Hệ")</h2>
+                                                            <p>@_pItem.ten</p>
+                                                            <a href="/Cart/AddItem/@_pItem.id" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                                _first = false;
+                            }
+                            _first = true;
+                        }
+
+
+                    </div>
+                </div>
+                <!---->
+            </div>
+        </div>
+
+    </div>
+</section>
+
