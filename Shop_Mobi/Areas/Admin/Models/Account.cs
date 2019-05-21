@@ -71,7 +71,7 @@ namespace Shop_Mobi.Areas.Admin.Models
                 //SMTP yêu cầu mã hóa dữ liệu theo SSL
                 smtp.EnableSsl = true;
                 //UserName và Password của mail
-                smtp.Credentials = new NetworkCredential("iamcheckmail@gmail.com", "ch3ckm41l");
+                smtp.Credentials = new NetworkCredential("youremail@gmail.com", "yourpass");
 
                 //Tham số lần lượt là địa chỉ người gửi, người nhận, tiêu đề và nội dung thư
                 smtp.Send("Website Quản bá và bán điện thoại di dộng <shop_mobi@gmail.com>", nguoinhan, tieude, noidung);
