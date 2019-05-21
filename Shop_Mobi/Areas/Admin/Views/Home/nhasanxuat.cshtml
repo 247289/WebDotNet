@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Shop_Mobi.Databases.tbl_nhasanxuat>
 @{
     ViewBag.Notice = "Nha San Xuat";
-    ViewBag.Title = "nhasanxuat";
+    ViewBag.Title = "Thông tin nhà sản xuất";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -29,7 +29,6 @@
                         @Html.DisplayFor(modelItem => item.ten)
                     </td>
                     <td>
-                        @Html.ActionLink("Thêm", "Create", new { id = item.id }) |
                         @Html.ActionLink("Sửa", "Edit", new { id = item.id }) |
                         @Html.ActionLink("Xóa", "Delete", new { id = item.id })
                     </td>

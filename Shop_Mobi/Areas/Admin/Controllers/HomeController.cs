@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Shop_Mobi.Databases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Shop_Mobi.Databases;
+
 namespace Shop_Mobi.Areas.Admin.Controllers
 {
     public class HomeController : Controller
@@ -12,7 +13,20 @@ namespace Shop_Mobi.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
-            return View();
+            Shop_Mobi.Databases.tbl_taikhoan acc = null;
+            if (Session["UsersAdmin"] != null)
+            {
+                acc = (Shop_Mobi.Databases.tbl_taikhoan)Session["UsersAdmin"];
+                ViewBag.Account = acc;
+                return View();
+            }
+            else if (Session["UsersEmployee"] != null)
+            {
+                acc = (Shop_Mobi.Databases.tbl_taikhoan)Session["UsersEmployee"];
+                ViewBag.Account = acc;
+                return View();
+            }
+            return Redirect("~/Admin/Account/Login");
         }
 
         public ActionResult Sanpham()
@@ -26,13 +40,11 @@ namespace Shop_Mobi.Areas.Admin.Controllers
             var list_chitietdonhang = db.tbl_chitietdonhang.ToList();
             return View(list_chitietdonhang);
         }
-
         public ActionResult danhmuc()
         {
             var list_danhmuc = db.tbl_danhmuc.ToList();
             return View(list_danhmuc);
         }
-
         public ActionResult nhasanxuat()
         {
             var list_nhasanxuat = db.tbl_nhasanxuat.ToList();
@@ -51,10 +63,6 @@ namespace Shop_Mobi.Areas.Admin.Controllers
             return View(list_thongtincanhan);
         }
 
-        public ActionResult xulydon()
-        {
-            var list_xulydon = db.tbl_xulydon.ToList();
-            return View(list_xulydon);
-        }
+
     }
 }

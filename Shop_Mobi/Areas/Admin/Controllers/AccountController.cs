@@ -28,7 +28,7 @@ namespace Shop_Mobi.Areas.Admin.Controllers
             else if (a.CheckLogin(user, pass) == 3)//nhân viên
             {
                 Session["Users"] = a.GetInfo(user);//get info user;                
-                return Redirect("~/Home/Index");
+                return Redirect("~/Home/Index");  
             }
             else
             {
@@ -36,7 +36,6 @@ namespace Shop_Mobi.Areas.Admin.Controllers
                 return View();
             }
         }
-
 
         public ActionResult Logout()
         {
@@ -53,25 +52,44 @@ namespace Shop_Mobi.Areas.Admin.Controllers
             }
         }
 
-        //[HttpPost]
-        //public ActionResult Register(string user, string email, string pass)
-        //{
-        //    if (a.XacThucMail(email))
-        //    {
-        //        Register(user, email, pass);
-        //        return View("/");
-        //    }
-        //    else
-        //    {
-        //        ModelState.AddModelError("", "Đăng ký thất bại");
-        //        return View();
-        //    }
-        //}
-
         //[HttpGet]
-        //public ActionResult XacThucMail(int vertif)
+        //public ActionResult Register()
         //{
-
+        //    return View();
         //}
+
+        [HttpPost]
+        public ActionResult Register(string user, string email, string pass)
+        {
+            int code = a.Random();
+            Session["vertify"] = code;
+            string[] b = { user, email, pass };
+            Session["thongtin"] = b;
+            a.GuiMail(email, "Shop-Mobi | Website Quảng bá điện thoại di động", "Mã xác nhận của bạn là: " + code);
+            return Redirect("~/Admin/Account/ConfirmMail");
+            //.register(user, email, pass);
+            //return Redirect("~/Admin/Account/Login");
+        }
+
+        [HttpGet]
+        public ActionResult ConfirmMail()//action xac thuc mail
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ConfirmMail(int vertify)
+        {
+            if (vertify==(int)Session["vertify"])
+            {
+                string[] ac = (string[])Session["thongtin"];
+                a.register(ac[0], ac[1], ac[2]);
+                Session["thongtin"] = null;
+                Session["vertify"] = null;
+                return Redirect("~/Admin/Account/Login");
+            }
+            return View("/");
+        }
+
     }
 }

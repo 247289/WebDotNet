@@ -1,15 +1,13 @@
 ﻿@model IEnumerable<Shop_Mobi.Databases.tbl_taikhoan>
 @{
     ViewBag.Notice = "Tai khoan";
-    ViewBag.Title = "taikhoan";
+    ViewBag.Title = "Quản lý tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <h2>taikhoan</h2>
 <p>
     @Html.ActionLink("Thêm Mới", "Create") |
-    @Html.ActionLink("Sửa", "Edit")|
-    @Html.ActionLink("Xóa", "Delete")
 </p>
 <div class="box-body">
     <table id="example1" class="table table-bordered table-striped">

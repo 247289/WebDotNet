@@ -10,8 +10,8 @@ namespace Shop_Mobi.Databases
     {
         [Key]
         [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id_don { get; set; }
+        [StringLength(12)]
+        public string id_don { get; set; }
 
         [Key]
         [Column(Order = 1)]

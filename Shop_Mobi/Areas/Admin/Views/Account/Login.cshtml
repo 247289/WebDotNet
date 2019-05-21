@@ -1,8 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "Đăng nhập";
+    ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <section id="form">
     <!--form-->
@@ -13,8 +14,8 @@
                     <!--login form-->
                     <h2>Login to your account</h2>
                     <form action="Login" method="post">
-                        <input type="text" name="user" value="" placeholder="Nhập vào tên tài khoản của bạn" required/>
-                        <input type="password" name="pass" value="" placeholder="Nhập vào mật khẩu của bạn" required/>
+                        <input type="text" name="user" value="" placeholder="Nhập vào tên tài khoản của bạn" />
+                        <input type="password" name="pass" value="" placeholder="Nhập vào mật khẩu của bạn" />
                         <span>
                             <input type="checkbox" class="checkbox">
                             Giữ tôi luôn đăng nhập
@@ -47,3 +48,4 @@
         $("#slider").hide();
     });
 </script>
+

@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<Shop_Mobi.Databases.tbl_sanpham>
 @{
-    ViewBag.Notice = "Danh Sách Sản Phẩm";
-    ViewBag.Title = "Sanpham";
+    ViewBag.Title = "Quản lý sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <p>
     @Html.ActionLink("Thêm Mới", "Create") |
-    @Html.ActionLink("Sửa", "Edit")|
-    @Html.ActionLink("Xóa", "Delete")
 </p>
 <div class="box-body">
     <table id="example1" class="table table-bordered table-striped">
@@ -132,7 +129,6 @@
                         @Html.DisplayFor(modelItem => item.tinhtrang)
                     </td>
                     <td>
-                        @Html.ActionLink("Thêm", "Create", new { id = item.id }) |
                         @Html.ActionLink("Sửa", "Edit", new { id = item.id }) |
                         @Html.ActionLink("Xóa", "Delete", new { id = item.id })
                     </td>

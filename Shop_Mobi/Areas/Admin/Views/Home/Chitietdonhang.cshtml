@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Shop_Mobi.Databases.tbl_chitietdonhang>
 @{
     ViewBag.Notice = "Chi tiết đơn hàng";
-    ViewBag.Title = "Chitietdonhang";
+    ViewBag.Title = "Chi tiết đơn hàng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <p>
@@ -28,30 +28,24 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(Item => item.id_don)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.id_sp)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.soluong)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.gia)
-                </td>
-                <td>
-                    @Html.ActionLink("Thêm", "Create", new { id = item.id_sp }) |
-                    @Html.ActionLink("Sửa", "Edit", new { id = item.id_sp }) |
-                    @Html.ActionLink("Xóa", "Delete", new { id = item.id_sp })
-                </td>
-                <td>
-                    @Html.ActionLink("Thêm", "Create", new { id = item.id_don }) |
-                    @Html.ActionLink("Sửa", "Edit", new { id = item.id_don }) |
-                    @Html.ActionLink("Xóa", "Delete", new { id = item.id_don })
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(Item => item.id_don)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_sp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.soluong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gia)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.id_don }) |
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.id_don })
+                    </td>
+                </tr>
             }
         </tbody>
         <tfoot>

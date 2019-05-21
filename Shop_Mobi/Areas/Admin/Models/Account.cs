@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -35,14 +37,19 @@ namespace Shop_Mobi.Areas.Admin.Models
             else
                 return null;
         }
-        
-        //public bool XacThucMail(int vertify)
-        //{
-        //    bool isVal = false;
-        //    int code = (int)Session["vertify"];
-        //    if (code == vertify) isVal = true;
-        //    return isVal;
-        //}
+
+        public void register(string user, string email, string pass)
+        {
+            using (var item = new Shop_Mobi.Databases.ShopMobiContextDb())
+            {
+                item.Database.ExecuteSqlCommand("Register @user, @email, @pass", new[]
+                {
+                    new SqlParameter("user", user),
+                    new SqlParameter("email", email),
+                    new SqlParameter("pass", pass)
+                });
+            }
+        }
 
         //random code check
         public int Random()
@@ -64,13 +71,13 @@ namespace Shop_Mobi.Areas.Admin.Models
                 //SMTP yêu cầu mã hóa dữ liệu theo SSL
                 smtp.EnableSsl = true;
                 //UserName và Password của mail
-                smtp.Credentials = new NetworkCredential("iamcheckmail@gmail.com", "checkmail");
+                smtp.Credentials = new NetworkCredential("iamcheckmail@gmail.com", "ch3ckm41l");
 
                 //Tham số lần lượt là địa chỉ người gửi, người nhận, tiêu đề và nội dung thư
                 smtp.Send("Website Quản bá và bán điện thoại di dộng <shop_mobi@gmail.com>", nguoinhan, tieude, noidung);
 
             }
-            catch (Exception ex)
+            catch
             {
 
             }

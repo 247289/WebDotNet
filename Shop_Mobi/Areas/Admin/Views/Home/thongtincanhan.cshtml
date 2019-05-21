@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<Shop_Mobi.Databases.tbl_thongtincanhan>
 @{
     ViewBag.Notice = "thongtincanhan";
-    ViewBag.Title = "thongtincanhan";
+    ViewBag.Title = "Thông tin cá nhân";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>thongtincanhan</h2>
 <div class="box-body">
     <table id="example1" class="table table-bordered table-striped">
         <thead>
@@ -65,7 +64,6 @@
                         @Html.DisplayFor(modelItem => item.diachi)
                     </td>
                     <td>
-                        @Html.ActionLink("Thêm", "Create", new { id = item.id }) |
                         @Html.ActionLink("Sửa", "Edit", new { id = item.id }) |
                         @Html.ActionLink("Xóa", "Delete", new { id = item.id })
                     </td>
