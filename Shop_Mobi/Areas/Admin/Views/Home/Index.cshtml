@@ -1,14 +1,20 @@
 ﻿
 @{
     ViewBag.Title = "Admin | Shop-Mobi";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     var acc = (Shop_Mobi.Databases.tbl_taikhoan)ViewBag.Account;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
 }
 
-<h2>Wecome to admin | Shop-Mobi!</h2>
-<br />
-Hello, @acc.tentaikhoan!
-<br />
-Ahihi, Are you sure???
-<br />
-<a href="/Admin/Account/Logout">đăng xuất</a>
+<div class="">
+    @*<form>*@
+        <fieldset>
+            <legend>Hello, @acc.tentaikhoan!</legend>
+            You are one account lycky today!
+            <br />
+            Ahihi, Are you sure???
+            <br />
+            <i style="background-color: azure"><a href="/Admin/Account/Logout" style="text-decoration: none">Yes, I'm!</a></i>
+        </fieldset>
+    @*</form>*@
+</div>

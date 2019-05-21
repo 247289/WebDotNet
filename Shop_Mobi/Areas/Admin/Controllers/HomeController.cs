@@ -18,12 +18,16 @@ namespace Shop_Mobi.Areas.Admin.Controllers
             {
                 acc = (Shop_Mobi.Databases.tbl_taikhoan)Session["UsersAdmin"];
                 ViewBag.Account = acc;
+                //
+                Session["acc"] = acc;
                 return View();
             }
             else if (Session["UsersEmployee"] != null)
             {
                 acc = (Shop_Mobi.Databases.tbl_taikhoan)Session["UsersEmployee"];
                 ViewBag.Account = acc;
+                //
+                Session["acc"] = acc;
                 return View();
             }
             return Redirect("~/Admin/Account/Login");
