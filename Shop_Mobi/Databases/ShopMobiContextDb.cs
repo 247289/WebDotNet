@@ -31,10 +31,6 @@ namespace Shop_Mobi.Databases
                 .IsUnicode(false);
 
             modelBuilder.Entity<tbl_chitietdonhang>()
-                .Property(e => e.id_don)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<tbl_chitietdonhang>()
                 .Property(e => e.gia)
                 .HasPrecision(18, 0);
 
@@ -46,10 +42,6 @@ namespace Shop_Mobi.Databases
                 .HasMany(e => e.tbl_sanpham)
                 .WithOptional(e => e.tbl_danhmuc)
                 .HasForeignKey(e => e.id_dm);
-
-            modelBuilder.Entity<tbl_dondathang>()
-                .Property(e => e.id)
-                .IsUnicode(false);
 
             modelBuilder.Entity<tbl_dondathang>()
                 .Property(e => e.tonggia)
@@ -164,10 +156,6 @@ namespace Shop_Mobi.Databases
                 .HasMany(e => e.tbl_taikhoan)
                 .WithOptional(e => e.tbl_thongtincanhan)
                 .HasForeignKey(e => e.id_thontincanhan);
-
-            modelBuilder.Entity<tbl_xulydon>()
-                .Property(e => e.id_don)
-                .IsUnicode(false);
         }
     }
 }

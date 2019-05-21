@@ -1,0 +1,202 @@
+﻿@model IEnumerable<Shop_Mobi.Databases.tbl_sanpham>
+@{
+    ViewBag.Notice = "Danh Sách Sản Phẩm";
+    ViewBag.Title = "Sanpham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Thêm Mới", "Create") |
+    @Html.ActionLink("Sửa", "Edit")|
+    @Html.ActionLink("Xóa", "Delete")
+</p>
+<div class="box-body">
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Id Danh mục
+                </th>
+                <th>
+                    Tên Sản Phẩm
+                </th>
+                <th>
+                    Giá
+                </th>
+                <th>
+                    Số Lượng
+                </th>
+                <th>
+                    Trọng Lượng
+                </th>
+                <th>
+                    ROM
+                </th>
+                <th>
+                    RAM
+                </th>
+                <th>
+                    Thẻ Nhớ
+                </th>
+                <th>
+                    Camera Trước
+                </th>
+                <th>
+                    Camera Sau
+                </th>
+                <th>
+                    Pin
+                </th>
+                <th>
+                    Bảo Hành
+                </th>
+                <th>
+                    Bluetooth
+                </th>
+                <th>
+                    Id Nhà Sản Xuất
+                </th>
+                <th>
+                    CPU
+                </th>
+                <th>
+                    Màn Hình
+                </th>
+                <th>
+                    Tình Trạng
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(Item => item.id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_dm)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ten)
+                    </td>
+                    <td>
+                        <img src="@item.tbl_anh.ToList()[0].duongdan" width="80" height="120" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.soluong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.trongluong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ROM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RAM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.thenho)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.camera_truoc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.camera_sau)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.baohanh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.bluetooth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_nsx)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CPU)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.manhinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tinhtrang)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Thêm", "Create", new { id = item.id }) |
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Id Danh mục
+                </th>
+                <th>
+                    Tên Sản Phẩm
+                </th>
+                <th>
+                    Giá
+                </th>
+                <th>
+                    Số Lượng
+                </th>
+                <th>
+                    Trọng Lượng
+                </th>
+                <th>
+                    ROM
+                </th>
+                <th>
+                    RAM
+                </th>
+                <th>
+                    Thẻ Nhớ
+                </th>
+                <th>
+                    Camera Trước
+                </th>
+                <th>
+                    Camera Sau
+                </th>
+                <th>
+                    Pin
+                </th>
+                <th>
+                    Bảo Hành
+                </th>
+                <th>
+                    Bluetooth
+                </th>
+                <th>
+                    Id Nhà Sản Xuất
+                </th>
+                <th>
+                    CPU
+                </th>
+                <th>
+                    Màn Hình
+                </th>
+                <th>
+                    Tình Trạng
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+

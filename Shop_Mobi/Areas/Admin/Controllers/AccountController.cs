@@ -28,7 +28,7 @@ namespace Shop_Mobi.Areas.Admin.Controllers
             else if (a.CheckLogin(user, pass) == 3)//nhân viên
             {
                 Session["Users"] = a.GetInfo(user);//get info user;                
-                return Redirect("~/Home/Index");  
+                return Redirect("~/Home/Index");
             }
             else
             {
@@ -53,27 +53,25 @@ namespace Shop_Mobi.Areas.Admin.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult Register(string user, string email, string pass)
-        {
-            int code = a.Random();
-            Session["vertify"] = code;
-            return View();
-        }
+        //[HttpPost]
+        //public ActionResult Register(string user, string email, string pass)
+        //{
+        //    if (a.XacThucMail(email))
+        //    {
+        //        Register(user, email, pass);
+        //        return View("/");
+        //    }
+        //    else
+        //    {
+        //        ModelState.AddModelError("", "Đăng ký thất bại");
+        //        return View();
+        //    }
+        //}
 
-        [HttpGet]
-        public ActionResult ConfirmMail()//action xac thuc mail
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public ActionResult XacThucMail(int vertif)
+        //{
 
-        [HttpPost]
-        public ActionResult ConfirmMail(int vertif)
-        {
-            bool isVal = false;
-            int code = (int)Session["vertify"];
-            if (code == vertify) isVal = true;
-            return View();
-        }
+        //}
     }
 }

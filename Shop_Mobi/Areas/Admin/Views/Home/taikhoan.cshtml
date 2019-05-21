@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Shop_Mobi.Databases.tbl_taikhoan>
+@{
+    ViewBag.Notice = "Tai khoan";
+    ViewBag.Title = "taikhoan";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>taikhoan</h2>
+<p>
+    @Html.ActionLink("Thêm Mới", "Create") |
+    @Html.ActionLink("Sửa", "Edit")|
+    @Html.ActionLink("Xóa", "Delete")
+</p>
+<div class="box-body">
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Id quyen
+                </th>
+                <th>
+                    Ten tai khoan
+                </th>
+                <th>
+                    mat khau
+                </th>
+                <th>
+                    id thong tin ca nhan
+                </th>
+                <th>
+                    trang thai
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(Item => item.id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_quyen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tentaikhoan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.matkhau)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_thontincanhan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.trangthai)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Id quyen
+                </th>
+                <th>
+                    Ten tai khoan
+                </th>
+                <th>
+                    mat khau
+                </th>
+                <th>
+                    id thong tin ca nhan
+                </th>
+                <th>
+                    trang thai
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+

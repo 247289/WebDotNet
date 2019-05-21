@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Shop_Mobi.Databases.tbl_thongtincanhan>
+@{
+    ViewBag.Notice = "thongtincanhan";
+    ViewBag.Title = "thongtincanhan";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>thongtincanhan</h2>
+<div class="box-body">
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    ten
+                </th>
+                <th>
+                    sdt
+                </th>
+                <th>
+                    email
+                </th>
+                <th>
+                    ngaysinh
+                </th>
+                <th>
+                    gioi tinh
+                </th>
+                <th>
+                    anh dai dien
+                </th>
+                <th>
+                    dia chi
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(Item => item.id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ten)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sdt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngaysinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gioitinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.anhdaidien)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.diachi)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Thêm", "Create", new { id = item.id }) |
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    ten
+                </th>
+                <th>
+                    sdt
+                </th>
+                <th>
+                    email
+                </th>
+                <th>
+                    ngaysinh
+                </th>
+                <th>
+                    gioi tinh
+                </th>
+                <th>
+                    anh dai dien
+                </th>
+                <th>
+                    dia chi
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+

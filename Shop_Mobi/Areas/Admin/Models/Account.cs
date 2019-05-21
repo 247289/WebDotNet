@@ -35,14 +35,14 @@ namespace Shop_Mobi.Areas.Admin.Models
             else
                 return null;
         }
-
-        public bool XacThucMail(int vertify)
-        {
-            bool isVal = false;
-            int code = (int)Session["vertify"];
-            if (code == vertify) isVal = true;
-            return isVal;
-        }
+        
+        //public bool XacThucMail(int vertify)
+        //{
+        //    bool isVal = false;
+        //    int code = (int)Session["vertify"];
+        //    if (code == vertify) isVal = true;
+        //    return isVal;
+        //}
 
         //random code check
         public int Random()

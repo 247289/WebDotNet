@@ -15,8 +15,7 @@ namespace Shop_Mobi.Databases
             tbl_xulydon = new HashSet<tbl_xulydon>();
         }
 
-        [StringLength(12)]
-        public string id { get; set; }
+        public int id { get; set; }
 
         public int? id_tk { get; set; }
 
@@ -24,6 +23,9 @@ namespace Shop_Mobi.Databases
         public DateTime? ngaylap { get; set; }
 
         public decimal? tonggia { get; set; }
+
+        [StringLength(50)]
+        public string tinhtrang { get; set; }
 
         [StringLength(50)]
         public string diachi { get; set; }

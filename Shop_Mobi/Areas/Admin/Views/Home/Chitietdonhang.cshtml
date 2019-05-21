@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Shop_Mobi.Databases.tbl_chitietdonhang>
+@{
+    ViewBag.Notice = "Chi tiết đơn hàng";
+    ViewBag.Title = "Chitietdonhang";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="box-body">
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Id don
+                </th>
+                <th>
+                    id sp
+                </th>
+                <th>
+                    so luong
+                </th>
+                <th>
+                    gia
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(Item => item.id_don)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_sp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.soluong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gia)
+                </td>
+                <td>
+                    @Html.ActionLink("Thêm", "Create", new { id = item.id_sp }) |
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.id_sp }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.id_sp })
+                </td>
+                <td>
+                    @Html.ActionLink("Thêm", "Create", new { id = item.id_don }) |
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.id_don }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.id_don })
+                </td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    Id don
+                </th>
+                <th>
+                    id sp
+                </th>
+                <th>
+                    so luong
+                </th>
+                <th>
+                    gia
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
