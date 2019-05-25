@@ -5,17 +5,17 @@
 }
 
 <p>
-    @Html.ActionLink("Thêm Mới", "Create") |
+    @Html.ActionLink("Thêm Mới", "Create")
 </p>
 <div class="box-body">
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>
-                    Id
+                    STT
                 </th>
                 <th>
-                    Id Danh mục
+                    Nhà Sản Xuất
                 </th>
                 <th>
                     Tên Sản Phẩm
@@ -27,44 +27,27 @@
                     Số Lượng
                 </th>
                 <th>
-                    Trọng Lượng
-                </th>
-                <th>
                     ROM
                 </th>
                 <th>
                     RAM
                 </th>
                 <th>
-                    Thẻ Nhớ
-                </th>
-                <th>
-                    Camera Trước
-                </th>
-                <th>
-                    Camera Sau
-                </th>
-                <th>
                     Pin
                 </th>
                 <th>
-                    Bảo Hành
+                    Camera
+                </th>
+                @*<th>
+                Bluetooth
+            </th>*@
+                <th>
+                    Thẻ Nhớ
                 </th>
                 <th>
-                    Bluetooth
+                    Hiển thị
                 </th>
-                <th>
-                    Id Nhà Sản Xuất
-                </th>
-                <th>
-                    CPU
-                </th>
-                <th>
-                    Màn Hình
-                </th>
-                <th>
-                    Tình Trạng
-                </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -75,12 +58,10 @@
                         @Html.DisplayFor(Item => item.id)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.id_dm)
+                        @Html.DisplayFor(modelItem => item.tbl_nhasanxuat.ten)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ten)
-                    </td>
-                    <td>
+                        @Html.DisplayFor(modelItem => item.ten)<br />
                         <img src="@item.tbl_anh.ToList()[0].duongdan" width="80" height="120" />
                     </td>
                     <td>
@@ -90,43 +71,25 @@
                         @Html.DisplayFor(modelItem => item.soluong)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.trongluong)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.ROM)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.RAM)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.thenho)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.camera_truoc)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.camera_sau)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.pin)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.baohanh)
+                        Trước: @Html.DisplayFor(modelItem => item.camera_truoc) | Sau: @Html.DisplayFor(modelItem => item.camera_sau)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.bluetooth)
+                    </td>*@
+                    <td>
+                        @( item.thenho == "1" ? "có hỗ trợ" : "không hỗ trợ")
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.id_nsx)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CPU)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.manhinh)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.tinhtrang)
+                        <input type="checkbox" value="@item.tinhtrang" @(item.tinhtrang ==1 ? "checked=\"checked\"" : "")/>@(item.tinhtrang == 1 ? "có" : "không")
                     </td>
                     <td>
                         @Html.ActionLink("Sửa", "Edit", new { id = item.id }) |
@@ -138,10 +101,10 @@
         <tfoot>
             <tr>
                 <th>
-                    Id
+                    STT
                 </th>
                 <th>
-                    Id Danh mục
+                    Nhà Sản Xuất
                 </th>
                 <th>
                     Tên Sản Phẩm
@@ -153,44 +116,27 @@
                     Số Lượng
                 </th>
                 <th>
-                    Trọng Lượng
-                </th>
-                <th>
                     ROM
                 </th>
                 <th>
                     RAM
                 </th>
                 <th>
-                    Thẻ Nhớ
-                </th>
-                <th>
-                    Camera Trước
-                </th>
-                <th>
-                    Camera Sau
-                </th>
-                <th>
                     Pin
                 </th>
                 <th>
-                    Bảo Hành
+                    Camera
                 </th>
-                <th>
+                @*<th>
                     Bluetooth
+                </th>*@
+                <th>
+                    Thẻ Nhớ
                 </th>
                 <th>
-                    Id Nhà Sản Xuất
+                    Hiển thị
                 </th>
-                <th>
-                    CPU
-                </th>
-                <th>
-                    Màn Hình
-                </th>
-                <th>
-                    Tình Trạng
-                </th>
+                <th></th>
             </tr>
         </tfoot>
     </table>

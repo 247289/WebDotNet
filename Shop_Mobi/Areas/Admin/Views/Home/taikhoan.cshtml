@@ -3,57 +3,85 @@
     ViewBag.Notice = "Tai khoan";
     ViewBag.Title = "Quản lý tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int i = 0;
 }
 
-<h2>taikhoan</h2>
+<h2>Quản lý tài khoản</h2>
 <p>
-    @Html.ActionLink("Thêm Mới", "Create") |
+    @Html.ActionLink("Thêm Mới", "Create")
 </p>
 <div class="box-body">
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>
-                    Id
+                    STT
                 </th>
                 <th>
-                    Id quyen
+                    Tên tài khoản
                 </th>
                 <th>
-                    Ten tai khoan
+                    Mật khẩu
                 </th>
                 <th>
-                    mat khau
+                    Quyền
                 </th>
                 <th>
-                    id thong tin ca nhan
+                    Trạng thái
                 </th>
-                <th>
-                    trang thai
-                </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
+                if (item.id_quyen == 1)
+                {
+                    continue;
+                }
+                i += 1;
                 <tr>
                     <td>
-                        @Html.DisplayFor(Item => item.id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.id_quyen)
+                        @i
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.tentaikhoan)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.matkhau)
+                        @*@Html.DisplayFor(modelItem => item.matkhau)*@
+                        <input type="password" id="pass" name="pass" value="@item.matkhau" />
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.id_thontincanhan)
+                        @*@Html.DisplayFor(modelItem => item.id_quyen)*@
+                        <select id="select1">
+                           @if (item.id_quyen == 2)
+                           {
+                            <option id="quyen2" value="@item.id_quyen">Nhân viên</option>
+                            <option id="quyen3" value="@item.id_quyen">Người dùng</option>
+                           }
+                           else if (item.id_quyen == 3)
+                           {
+                            <option id="quyen3" value="@item.id_quyen">Người dùng</option>
+                            <option id="quyen2" value="@item.id_quyen">Nhân viên</option>
+                           }
+
+                        </select>
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.trangthai)
+                        @*@Html.DisplayFor(modelItem => item.trangthai)*@
+                        <select id="select2">
+                            @if ((bool)item.trangthai)
+                            {
+                                <option id="trangthai1" value="@item.trangthai">Kích hoạt</option>
+                                <option id="trangthai2" value="@item.trangthai">Không kích hoạt</option>
+                            }
+                            else
+                            {
+                                <option id="trangthai2" value="@item.trangthai">Không kích hoạt</option>
+                                <option id="trangthai1" value="@item.trangthai">Kích hoạt</option>
+                            }
+
+                        </select>
                     </td>
                     <td>
                         @Html.ActionLink("Sửa", "Edit", new { id = item.id }) |
@@ -65,23 +93,21 @@
         <tfoot>
             <tr>
                 <th>
-                    Id
+                    STT
                 </th>
                 <th>
-                    Id quyen
+                    Tên tài khoản
                 </th>
                 <th>
-                    Ten tai khoan
+                    Mật khẩu
                 </th>
                 <th>
-                    mat khau
+                    Quyền
                 </th>
                 <th>
-                    id thong tin ca nhan
+                    Trạng thái
                 </th>
-                <th>
-                    trang thai
-                </th>
+                <th></th>
             </tr>
         </tfoot>
     </table>

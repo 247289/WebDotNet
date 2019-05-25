@@ -1,20 +1,49 @@
 ﻿
 @{
     ViewBag.Title = "Admin | Shop-Mobi";
-    var acc = (Shop_Mobi.Databases.tbl_taikhoan)ViewBag.Account;
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-
+    Shop_Mobi.Databases.tbl_taikhoan acc = null;
+    if (Session["UsersAdmin"] != null)
+    {
+        acc = (Shop_Mobi.Databases.tbl_taikhoan)Session["UsersAdmin"];
+    }
+    else if (Session["UsersEmployee"] != null)
+    {
+        acc = (Shop_Mobi.Databases.tbl_taikhoan)Session["UsersEmployee"];
+    }
 }
 
-<div class="">
-    @*<form>*@
-        <fieldset>
-            <legend>Hello, @acc.tentaikhoan!</legend>
-            You are one account lycky today!
-            <br />
-            Ahihi, Are you sure???
-            <br />
-            <i style="background-color: azure"><a href="/Admin/Account/Logout" style="text-decoration: none">Yes, I'm!</a></i>
-        </fieldset>
-    @*</form>*@
+<div class="" style="padding-left:10px; padding-top: 10px;">
+    <fieldset>
+        <legend>Hello, @acc.tentaikhoan!</legend>
+        @*Tên: <input type="text" id="name" name="name" value="@acc.tbl_thongtincanhan.ten" readonly/><br />
+        Số điện thoại: <input type="text" id="contact" name="contact" value="@acc.tbl_thongtincanhan.sdt"  /><br />
+        Email: <input type="email" id="email" name="email" value="@acc.tbl_thongtincanhan.email" /><br />
+        Ngày sinh: <input type="text" id="date" name="date" value="@acc.tbl_thongtincanhan.ngaysinh" /><br />
+        Địa chỉ: <input type="text" id="address" name="address" value="@acc.tbl_thongtincanhan.diachi" /><br />
+        <form action="#" method="post">
+            <table>
+                <caption>Thay đổi mật khẩu</caption>
+                <tr>
+                    <td>Mật khẩu: </td>
+                    <td><input type="password" id="pass" name="pass" value="" /></td>
+                </tr>
+                <tr>
+                    <td>Nhập lại mật khẩu: </td>
+                    <td><input type="password" id="confirm" name="confirm" value="" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="submit" value="Đổi mật khẩu" />
+                    </td>
+                </tr>
+            </table>
+        </form>*@
+        <br />
+        You are one account lycky today!
+        <br />
+        Ahihi, Are you sure???
+        <br />
+        <i style="background-color: azure"><a href="/Admin/Account/Logout" style="text-decoration: none">Yes, I'm!</a></i>
+    </fieldset>
 </div>

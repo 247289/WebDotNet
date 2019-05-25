@@ -1,6 +1,14 @@
-﻿@{
-    var acc = (Shop_Mobi.Databases.tbl_taikhoan)ViewBag.Account;
-}
+﻿@*@{
+    Shop_Mobi.Databases.tbl_taikhoan acc = null;
+    if (Session["UsersAdmin"] != null)
+    {
+        acc = (Shop_Mobi.Databases.tbl_taikhoan)Session["UsersAdmin"];
+    }
+    else if (Session["UsersEmployee"] != null)
+    {
+        acc = (Shop_Mobi.Databases.tbl_taikhoan)Session["UsersEmployee"];
+    }
+}*@
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,17 +42,15 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="~/Areas/Admin/Resources/lte/css/skins/_all-skins.min.css">
 
-    @*<link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">*@
-
-    @*datatable*@
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href="/Home/Index" class="logo">
+            <a href="#" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>A</b>LT</span>
                 <!-- logo for regular state and mobile devices -->
@@ -76,7 +82,7 @@
                                             <!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="~/Areas/Admin/Resources/lte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                    <img src="~/Areas/Admin/Resources/lte/img/avatar5.png" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Support Team
@@ -89,7 +95,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="~/Areas/Admin/Resources/lte/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="~/Areas/Admin/Resources/lte/img/avatar5.png" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Tùy biến bởi Team Dut
@@ -101,7 +107,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="~/Areas/Admin/Resources/lte/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="~/Areas/Admin/Resources/lte/img/avatar5.png" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Developers
@@ -113,7 +119,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="~/Areas/Admin/Resources/lte/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="~/Areas/Admin/Resources/lte/img/avatar5.png" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Sales Department
@@ -125,7 +131,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="~/Areas/Admin/Resources/lte/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="~/Areas/Admin/Resources/lte/img/avatar5.png" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Reviewers
@@ -139,35 +145,32 @@
                                 <li class="footer"><a href="#">See All Messages</a></li>
                             </ul>
                         </li>
-
+l
                         <li class="dropdown user user-menu">
                             <a href="~/Admin/Home/Index" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="@acc.tbl_thongtincanhan.anhdaidien" class="user-image" alt="User Image">
-                                <span class="hidden-xs">@acc.tentaikhoan</span>
+                                <img src="~/Areas/Admin/Resources/lte/img/avatar5.png" class="user-image" alt="User Image">
+                                <span class="hidden-xs">@*@acc.tentaikhoan*@Admin</span>
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu" style="width: 170px;">
                                 <li>
                                     <a href="~/Admin/Home/Index">
                                         <div class="pull-left">
-                                            <img src="@acc.tbl_thongtincanhan.anhdaidien" class="img-circle" alt="User Image">
+                                            <img src="~/Areas/Admin/Resources/lte/img/avatar5.png" class="img-circle" alt="User Image" style="witdh: 25px; height: 25px;">
                                         </div>
-                                        <p>Profile</p>
+                                        <p>Thông tin cá nhân</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="~/Admin/Account/Logout">
                                         <div class="pull-left">
-                                            <img src="#" class="img-circle" alt="User Image">
+                                            <img src="~/Areas/Admin/Resources/lte/img/avatar5.png" class="img-circle" alt="User Image" style="witdh: 25px; height: 25px;">
                                         </div>
                                         <p>Đăng Xuất</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <!-- Control Sidebar Toggle Button -->
-                        <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                        </li>
+                        
                     </ul>
                 </div>
             </nav>
@@ -179,10 +182,10 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="@acc.tbl_thongtincanhan.anhdaidien" class="img-circle" alt="User Image">
+                        <img src="~/Areas/Admin/Resources/lte/img/avatar5.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <a href="/Admin/Home/Index"><p>@acc.tentaikhoan</p></a>
+                        <a href="/Admin/Home/Index"><p>@*@acc.tentaikhoan*@Admin</p></a>
                     </div>
                 </div>
                 <!-- search form -->
@@ -199,17 +202,16 @@
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li><a href="~/Admin/Home/Sanpham"><i class="fa fa-edit"></i> <span>Sản Phẩm </span></a></li>
-                    <li><a href="~/Admin/Home/thongtincanhan"><i class="fa fa-edit"></i> <span>Thông tin cá nhân </span></a></li>
-                    <li><a href="~/Admin/Home/taikhoan"><i class="fa fa-edit"></i> <span>Tài Khoản</span></a></li>
-                    <li><a href="~/Admin/Home/danhmuc"><i class="fa fa-edit"></i> <span>Danh Mục</span></a></li>
+                    <li class="header">Quản lý sản phẩm</li>
+                    <li><a href="~/Admin/Home/Sanpham"><i class="fa fa-edit"></i> <span>Điện Thoại</span></a></li>
+                    <li><a href="#"><i class="fa fa-edit"></i> <span>Tablet</span></a></li>
+                    <li><a href="#"><i class="fa fa-edit"></i> <span>Phụ Kiện</span></a></li>
+                    <li><a href="#"><i class="fa fa-edit"></i> <span>Khuyến Mại </span></a></li>
                     <li class="header">Quản Lí Đơn Hàng</li>
-                    <li><a href="~/Admin/Home/Chitietdonhang"><i class="fa fa-edit"></i> <span>Chi tiết đơn hàng </span></a></li>
-                    <li><a href="~/Admin/Home/nhasanxuat"><i class="fa fa-edit"></i> <span>Nhà Sản Xuất</span></a></li>
+                    <li><a href="~/Admin/Home/Chitietdonhang"><i class="fa fa-edit"></i> <span>Chi Tiết Đơn Hàng </span></a></li>
                     <li class="header">Hệ Thống</li>
-                    <li><a href="~/Admin/TaiKhoan/Index"><i class="fa fa-circle-o text-red"></i> <span>Quản Lý Tài Khản</span></a></li>
+                    <li><a href="~/Admin/Home/taikhoan"><i class="fa fa-edit"></i> <span>Quản Lý Tài Khoản</span></a></li>
                     <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Nhật Ký Hệ Thống</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Thông Tin</span></a></li>
                     <li><a href="~/Admin/Account/Logout"><i class="fa fa-circle-o text-black"></i> <span>Đăng Xuất</span></a></li>
                 </ul>
             </section>
@@ -236,14 +238,7 @@
         </div>
 
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 2.4.0
-            </div>
-            <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-            reserved.
-        </footer>
-
+        
     </div>
     <!-- ./wrapper -->
     <!-- jQuery 3 -->
@@ -267,7 +262,7 @@
     <script src="~/Areas/Admin/Resources/lte/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/Areas/Admin/Resources/lte/js/demo.js"></script>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
     <!-- table-->
     <!-- DataTables -->
     <script src="~/Areas/Admin/Resources/datatables.net/js/jquery.dataTables.min.js"></script>

@@ -3,6 +3,7 @@
     ViewBag.Notice = "Chi tiết đơn hàng";
     ViewBag.Title = "Chi tiết đơn hàng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int i = 0;
 }
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,23 +13,33 @@
         <thead>
             <tr>
                 <th>
-                    Id don
+                    STT
                 </th>
                 <th>
-                    id sp
+                    Mã đơn hàng
                 </th>
                 <th>
-                    so luong
+                    Mã sản phẩm
                 </th>
                 <th>
-                    gia
+                    Số lượng
+                </th>
+                <th>
+                    Tổng giá
+                </th>
+                <th>
+
                 </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
+                i += 1;
                 <tr>
+                    <td>
+                        @i
+                    </td>
                     <td>
                         @Html.DisplayFor(Item => item.id_don)
                     </td>
@@ -39,7 +50,7 @@
                         @Html.DisplayFor(modelItem => item.soluong)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.gia)
+                        @Html.DisplayFor(modelItem => item.gia * item.soluong)
                     </td>
                     <td>
                         @Html.ActionLink("Sửa", "Edit", new { id = item.id_don }) |
@@ -51,16 +62,22 @@
         <tfoot>
             <tr>
                 <th>
-                    Id don
+                    STT
                 </th>
                 <th>
-                    id sp
+                    Mã đơn hàng
                 </th>
                 <th>
-                    so luong
+                    Mã sản phẩm
                 </th>
                 <th>
-                    gia
+                    Số lượng
+                </th>
+                <th>
+                    Tổng giá
+                </th>
+                <th>
+
                 </th>
             </tr>
         </tfoot>

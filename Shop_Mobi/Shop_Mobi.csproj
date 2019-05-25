@@ -261,7 +261,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Resources\" />
+    <Folder Include="Areas\Admin\Resources\bootstrap-colorpicker\" />
+    <Folder Include="Areas\Admin\Resources\bootstrap-datepicker\" />
+    <Folder Include="Areas\Admin\Resources\bootstrap-daterangepicker\" />
+    <Folder Include="Areas\Admin\Resources\bootstrap\" />
+    <Folder Include="Areas\Admin\Resources\datatables.net-bs\" />
+    <Folder Include="Areas\Admin\Resources\datatables.net\" />
+    <Folder Include="Areas\Admin\Resources\fastclick\" />
+    <Folder Include="Areas\Admin\Resources\font-awesome\" />
+    <Folder Include="Areas\Admin\Resources\Ionicons\" />
+    <Folder Include="Areas\Admin\Resources\jquery-slimscroll\" />
+    <Folder Include="Areas\Admin\Resources\jquery\" />
+    <Folder Include="Areas\Admin\Resources\lte\" />
+    <Folder Include="Areas\Admin\Resources\moment\" />
+    <Folder Include="Areas\Admin\Resources\select2\" />
     <Folder Include="Resources\fonts\awesome\" />
   </ItemGroup>
   <ItemGroup>
@@ -326,16 +339,7 @@
     <Content Include="Areas\Admin\Views\Home\Chitietdonhang.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\Views\Home\danhmuc.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Admin\Views\Home\nhasanxuat.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Areas\Admin\Views\Home\taikhoan.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Admin\Views\Home\thongtincanhan.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
