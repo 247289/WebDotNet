@@ -88,7 +88,8 @@ namespace Shop_Mobi.Areas.Admin.Controllers
                 Session["vertify"] = null;
                 return Redirect("~/Admin/Account/Login");
             }
-            return View("/");
+            ViewBag.Notice = "Mã sai, vui lòng nhập lại trong vòng 1 phút! thanks!!!";
+            return View();
         }
 
     }
