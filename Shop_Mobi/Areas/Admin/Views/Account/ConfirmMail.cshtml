@@ -1,15 +1,20 @@
-﻿
+
 @{
     ViewBag.Title = "Xac nhan mail";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string a = (string)ViewBag.Notice;
 }
 
-<div class="">
-    <form action="ConfirmMail" method="post">
-        <input type="text" name="vertify" placeholder="Nhap code..." />
-        <br />
-        <input type="submit" value="Xác nhận" />
-    </form>
+<div class="container text-center">
+    <div  style="padding-top: 20px; margin-bottom: 5px;>
+        <form action="ConfirmMail" method="post">
+            Nhập vào mã xác nhận của bạn <input type="text" name="vertify" placeholder="1111111" required/>
+            <br />
+            <label id="errcode">@a</label>
+            <br />
+            <input type="submit" value="Xác nhận" style="margin-top: 5px"/>
+        </form>
+    </div>
 </div>
 
 <script>
