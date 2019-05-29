@@ -18,7 +18,7 @@ namespace Shop_Mobi.Areas.Admin.Models
                 //_account = account;
                 if (account != null)
                 {
-                    return (int)account.id_quyen;
+                    return (int)account.id_q;
                 }
                 else
                 {
@@ -83,7 +83,7 @@ namespace Shop_Mobi.Areas.Admin.Models
             }
         }
 
-        private string _key = Crypt.Base64Decode("Y2gzy2ttndF");
+        private string _key = Crypt.Base64Decode("Y2gzy2ttndFs");
         private string key = Crypt.Base64Decode("WTJnelkydHROREZz");
 
         private string m()

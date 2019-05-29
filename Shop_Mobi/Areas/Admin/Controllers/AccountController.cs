@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using Shop_Mobi.Databases;
+using System.Web.Mvc;
 
 namespace Shop_Mobi.Areas.Admin.Controllers
 {
@@ -17,7 +18,11 @@ namespace Shop_Mobi.Areas.Admin.Controllers
         {
             if (a.CheckLogin(user, pass) == 1)//admin
             {
-                Session["UsersAdmin"] = a.GetInfo(user);//get info admin;                
+                Session["UsersAdmin"] = a.GetInfo(user);//get info admin;     
+                                                        //Session["test"] = "A";
+
+                // tbl_taikhoan tk = (tbl_taikhoan)Session["UsersAdmin"];
+
                 return Redirect("~/Admin/Home/Index");
             }
             else if (a.CheckLogin(user, pass) == 2)//nhân viên
@@ -28,7 +33,7 @@ namespace Shop_Mobi.Areas.Admin.Controllers
             else if (a.CheckLogin(user, pass) == 3)//nhân viên
             {
                 Session["Users"] = a.GetInfo(user);//get info user;                
-                return Redirect("~/Home/Index");  
+                return Redirect("~/Home/Index");
             }
             else
             {
@@ -80,7 +85,7 @@ namespace Shop_Mobi.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult ConfirmMail(int vertify)
         {
-            if (vertify==(int)Session["vertify"])
+            if (vertify == (int)Session["vertify"])
             {
                 string[] ac = (string[])Session["thongtin"];
                 a.register(ac[0], ac[1], ac[2]);
@@ -88,7 +93,8 @@ namespace Shop_Mobi.Areas.Admin.Controllers
                 Session["vertify"] = null;
                 return Redirect("~/Admin/Account/Login");
             }
-            return View("/");
+            ViewBag.Notice = "Mã sai, vui lòng nhập lại trong vòng 1 phút! thanks!!!";
+            return View();
         }
 
     }

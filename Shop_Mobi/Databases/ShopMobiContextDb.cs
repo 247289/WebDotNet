@@ -83,11 +83,7 @@ namespace Shop_Mobi.Databases
             modelBuilder.Entity<tbl_quyen>()
                 .HasMany(e => e.tbl_taikhoan)
                 .WithOptional(e => e.tbl_quyen)
-                .HasForeignKey(e => e.id_quyen);
-
-            modelBuilder.Entity<tbl_sanpham>()
-                .Property(e => e.gia)
-                .HasPrecision(12, 0);
+                .HasForeignKey(e => e.id_q);
 
             modelBuilder.Entity<tbl_sanpham>()
                 .Property(e => e.trongluong)
@@ -163,7 +159,7 @@ namespace Shop_Mobi.Databases
             modelBuilder.Entity<tbl_thongtincanhan>()
                 .HasMany(e => e.tbl_taikhoan)
                 .WithOptional(e => e.tbl_thongtincanhan)
-                .HasForeignKey(e => e.id_thontincanhan);
+                .HasForeignKey(e => e.id_ttcn);
 
             modelBuilder.Entity<tbl_xulydon>()
                 .Property(e => e.id_don)

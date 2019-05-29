@@ -1,115 +1,23 @@
-﻿@model IEnumerable<Shop_Mobi.Databases.tbl_taikhoan>
-@{
-    ViewBag.Notice = "Tai khoan";
+﻿@{
+    ViewBag.Notice = "Quản lý tài khoản";
     ViewBag.Title = "Quản lý tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    int i = 0;
+    bool tab_index = (bool)ViewBag.TabIndex;
+    string active_tab = " in active";
 }
 
-<h2>Quản lý tài khoản</h2>
-<p>
-    @Html.ActionLink("Thêm Mới", "Create")
-</p>
-<div class="box-body">
-    <table id="example1" class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>
-                    STT
-                </th>
-                <th>
-                    Tên tài khoản
-                </th>
-                <th>
-                    Mật khẩu
-                </th>
-                <th>
-                    Quyền
-                </th>
-                <th>
-                    Trạng thái
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                if (item.id_quyen == 1)
-                {
-                    continue;
-                }
-                i += 1;
-                <tr>
-                    <td>
-                        @i
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.tentaikhoan)
-                    </td>
-                    <td>
-                        @*@Html.DisplayFor(modelItem => item.matkhau)*@
-                        <input type="password" id="pass" name="pass" value="@item.matkhau" />
-                    </td>
-                    <td>
-                        @*@Html.DisplayFor(modelItem => item.id_quyen)*@
-                        <select id="select1">
-                           @if (item.id_quyen == 2)
-                           {
-                            <option id="quyen2" value="@item.id_quyen">Nhân viên</option>
-                            <option id="quyen3" value="@item.id_quyen">Người dùng</option>
-                           }
-                           else if (item.id_quyen == 3)
-                           {
-                            <option id="quyen3" value="@item.id_quyen">Người dùng</option>
-                            <option id="quyen2" value="@item.id_quyen">Nhân viên</option>
-                           }
+<div style="margin-left:15px; margin-top:10px;">
+    <ul class="nav nav-tabs">
+        <li class="@(tab_index?"active":"")"><a data-toggle="tab" href="#nv-content">Nhân viên</a></li>
+        <li class="@(tab_index?"":"active")"><a data-toggle="tab" href="#kh-content">Khách hàng</a></li>
+    </ul>
 
-                        </select>
-                    </td>
-                    <td>
-                        @*@Html.DisplayFor(modelItem => item.trangthai)*@
-                        <select id="select2">
-                            @if ((bool)item.trangthai)
-                            {
-                                <option id="trangthai1" value="@item.trangthai">Kích hoạt</option>
-                                <option id="trangthai2" value="@item.trangthai">Không kích hoạt</option>
-                            }
-                            else
-                            {
-                                <option id="trangthai2" value="@item.trangthai">Không kích hoạt</option>
-                                <option id="trangthai1" value="@item.trangthai">Kích hoạt</option>
-                            }
-
-                        </select>
-                    </td>
-                    <td>
-                        @Html.ActionLink("Sửa", "Edit", new { id = item.id }) |
-                        @Html.ActionLink("Xóa", "Delete", new { id = item.id })
-                    </td>
-                </tr>
-            }
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>
-                    STT
-                </th>
-                <th>
-                    Tên tài khoản
-                </th>
-                <th>
-                    Mật khẩu
-                </th>
-                <th>
-                    Quyền
-                </th>
-                <th>
-                    Trạng thái
-                </th>
-                <th></th>
-            </tr>
-        </tfoot>
-    </table>
+    <div class="tab-content">
+        <div id="nv-content" class="tab-pane fade@(tab_index?active_tab:"")" style="margin-top:10px;">
+            <div id="nv-partview">@{Html.RenderAction("nhanvien");}</div>
+        </div>
+        <div id="kh-content" class="tab-pane fade@(tab_index?"":active_tab)" style="margin-top:10px;">
+            <div id="kh-partview">@{Html.RenderAction("khachhang");}</div>
+        </div>
+    </div>
 </div>
-

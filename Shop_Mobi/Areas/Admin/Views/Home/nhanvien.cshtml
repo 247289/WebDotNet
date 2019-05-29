@@ -1,0 +1,56 @@
+﻿@using Shop_Mobi.Areas.Admin.Models
+@using PagedList
+@using PagedList.Mvc
+@model IPagedList<Person>
+@{
+    int order = (Convert.ToInt32(Session["employee_page"]) - 1) * Convert.ToInt32(Session["page_size"]) + 1;
+}
+
+<table class="table table-bordered">
+    <tr id="header_row">
+        <th>STT</th>
+        <th>Tài khoản</th>
+        <th>Loại tài khoản</th>
+        <th>Người dùng</th>
+        <th>Kích hoạt</th>
+        <th colspan="3">Thao tác</th>
+    </tr>
+    @foreach (var person in Model)
+    {
+        <tr>
+            <td>@order</td>
+            <td>@person.tentaikhoan</td>
+            <td>@person.quyen</td>
+            <td>
+                <div class="custom-tooltip">
+                    <div class="custom-tooltiptext">
+                        <table>
+                            <tr>
+                                <th width="40%" style="text-align:center">Ảnh</th>
+                                <th width="60%" style="text-align:center">Thông tin cá nhân</th>
+                            </tr>
+                            <tr>
+                                <td><img src="@person.anhdaidien" /></td>
+                                <td style="text-align:left">
+                                    Họ tên: @person.hoten<br />
+                                    Ngày sinh: @Convert.ToDateTime(person.ngaysinh).ToShortDateString()<br />
+                                    Giới tính: @(person.gioitinh == true ? "Nam" : "Nữ")<br />
+                                    Địa chỉ: @person.diachi<br />
+                                    Số điện thoại: @("0" + person.sdt.ToString())<br />
+                                    Email: @person.email<br />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <a>@person.hoten</a>
+                </div>
+            </td>
+            <td>@(person.trangthai == true ? "kích hoạt" : "không kích hoạt")</td>
+            <td><button>Sửa thông tin</button></td>
+            <td><button>Khôi phục mật khẩu</button></td>
+            <td><button>Xóa tài khoản</button></td>
+        </tr>
+        order++;
+    }
+</table>
+@Html.PagedListPager(Model, page => Url.Action("taikhoan", new { employee_page = page }))

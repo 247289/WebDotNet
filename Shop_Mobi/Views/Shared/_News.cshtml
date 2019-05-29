@@ -4,7 +4,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Tin tức công nghệ";
-    var list = ViewBag.Newlist;
+//    var list = ViewBag.Newlist;
 }
 <section class="container">
     <br />
@@ -14,7 +14,7 @@
 
             <div class="blog-post-area">
                 <h2 class="title text-center">Tin tức công nghệ</h2>
-                @foreach (var item in list)
+                @foreach (var item in Model)
                 {
                     <div class="single-blog-post">
 

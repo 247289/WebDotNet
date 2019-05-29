@@ -20,7 +20,7 @@ namespace Shop_Mobi.Models
         [StringLength(150)]
         public string ten { get; set; }
 
-        public decimal? gia { get; set; }
+        public int? gia { get; set; }
 
         public int? soluong { get; set; }
 

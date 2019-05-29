@@ -18,7 +18,7 @@ namespace Shop_Mobi.Databases
 
         public int id { get; set; }
 
-        public int? id_quyen { get; set; }
+        public int? id_q { get; set; }
 
         [StringLength(50)]
         public string tentaikhoan { get; set; }
@@ -26,7 +26,7 @@ namespace Shop_Mobi.Databases
         [StringLength(30)]
         public string matkhau { get; set; }
 
-        public int? id_thontincanhan { get; set; }
+        public int? id_ttcn { get; set; }
 
         public bool? trangthai { get; set; }
 

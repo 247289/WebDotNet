@@ -144,7 +144,7 @@ namespace Shop_Mobi.Controllers
                 listConvert.Add(news);
             }
             
-            ViewBag.Newlist = listConvert;
+            //ViewBag.Newlist = listConvert;
 
             return View("_News", listConvert.ToPagedList(page, size));
         }
