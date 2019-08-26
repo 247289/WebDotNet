@@ -1,0 +1,94 @@
+﻿@model Shop_Mobi.Databases.tbl_sanpham
+@{
+    ViewBag.Title = "suasp";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="box-body">
+    <form action="@Url.Action("suasanpham","Home")" method="post">
+        <table class="table">
+            <tr style="display: none">
+                <td><input type="text" name="id_sp" value="@Model.id" /></td>
+            </tr>
+            <tr>
+                <td>danh mục</td>
+                <td><input type="text" name="id_dm" value="@Model.id_dm" /></td>
+            </tr>
+            <tr>
+                <td>tên</td>
+                <td><input type="text" name="ten" value="@Model.ten" /></td>
+            </tr>
+            <tr>
+                <td>giá</td>
+                <td><input type="text" name="gia" value="@Model.gia" /></td>
+            </tr>
+            <tr>
+                <td>số lượng</td>
+                <td><input type="text" name="soluong" value="@Model.soluong" /></td>
+            </tr>
+            <tr>
+                <td>trọng lượng</td>
+                <td><input type="text" name="trongluong" value="@Model.trongluong" /></td>
+            </tr>
+            <tr>
+                <td>ROM</td>
+                <td><input type="text" name="ROM" value="@Model.ROM" /></td>
+            </tr>
+            <tr>
+                <td>RAM</td>
+                <td><input type="text" name="RAM" value="@Model.RAM" /></td>
+            </tr>
+            <tr>
+                <td>thẻ nhớ</td>
+                <td><input type="text" name="thenho" value="@Model.thenho" /></td>
+            </tr>
+            <tr>
+                <td>camera trước</td>
+                <td><input type="text" name="camera_truoc" value="@Model.camera_truoc" /></td>
+            </tr>
+            <tr>
+                <td>camera sau</td>
+                <td><input type="text" name="camera_sau" value="@Model.camera_sau" /></td>
+            </tr>
+            <tr>
+                <td>pin</td>
+                <td><input type="text" name="pin" value="@Model.pin" /></td>
+            </tr>
+            <tr>
+                <td>Bảo hành</td>
+                <td><input type="text" name="baohanh" value="@Model.baohanh" /></td>
+            </tr>
+            <tr>
+                <td>bluetooth</td>
+                <td><input type="text" name="bluetooth" value="@Model.bluetooth" /></td>
+            </tr>
+            <tr>
+                <td>Nhà Sản Xuất</td>
+                <td><input type="text" name="id_nsx" value="@Model.id_nsx" /></td>
+            </tr>
+            <tr>
+                <td>CPU</td>
+                <td><input type="text" name="CPU" value="@Model.CPU" /></td>
+            </tr>
+            <tr>
+                <td>Màn Hình</td>
+                <td><input type="text" name="manhinh" value="@Model.manhinh" /></td>
+            </tr>
+            <tr>
+                <td>tình trạng</td>
+                <td><input type="text" name="tinhtrang" value="@Model.tinhtrang" /></td>
+            </tr>
+            <tr align="center">
+                <td colspan="2">
+                    <input type="submit" value="Sửa" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <a href="~/Admin/Home/DienThoai">Trờ về</a>
+</div>
+
+
+
+

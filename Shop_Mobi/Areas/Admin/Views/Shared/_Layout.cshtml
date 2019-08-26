@@ -238,10 +238,10 @@ l
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">Quản lý sản phẩm</li>
-                    <li><a href="~/Admin/Home/Sanpham"><i class="fa fa-edit"></i> <span>Điện Thoại</span></a></li>
-                    <li><a href="#"><i class="fa fa-edit"></i> <span>Tablet</span></a></li>
-                    <li><a href="#"><i class="fa fa-edit"></i> <span>Phụ Kiện</span></a></li>
-                    <li><a href="#"><i class="fa fa-edit"></i> <span>Khuyến Mại </span></a></li>
+                    <li><a href="~/Admin/Home/DienThoai"><i class="fa fa-edit"></i> <span>Điện Thoại</span></a></li>
+                    <li><a href="~/Admin/Home/Tablet"><i class="fa fa-edit"></i> <span>Tablet</span></a></li>
+                    <li><a href="~/Admin/Home/PhuKien"><i class="fa fa-edit"></i> <span>Phụ Kiện</span></a></li>
+                    <li><a href="~/Admin/Home/KhuyenMai"><i class="fa fa-edit"></i> <span>Khuyến Mại </span></a></li>
                     <li class="header">Quản Lí Đơn Hàng</li>
                     <li><a href="~/Admin/Home/Chitietdonhang"><i class="fa fa-edit"></i> <span>Chi Tiết Đơn Hàng </span></a></li>
                     <li class="header">Hệ Thống</li>
@@ -389,6 +389,6 @@ l
             })
         })
     </script>
-    @*@RenderSection("scripts")*@
+    @RenderSection("scripts", required: false)
 </body>
 </html>

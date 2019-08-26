@@ -1,0 +1,88 @@
+﻿@using Shop_Mobi.Databases;
+@{
+    ViewBag.Title = "thêm mới sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box-body">
+    <form method="post" action="themmoisp">
+        <table id="themmoi" class="table table table-bordered">
+            <tr>
+                <td>danh mục</td>
+                <td><input type="text" name="id_dm" /></td>
+            </tr>
+            <tr>
+                <td>tên</td>
+                <td><input type="text" name="ten" /></td>
+            </tr>
+            <tr>
+                <td>giá</td>
+                <td><input type="text" name="gia" /></td>
+            </tr>
+            <tr>
+                <td>số lượng</td>
+                <td><input type="text" name="soluong" /></td>
+            </tr>
+            <tr>
+                <td>trọng lượng</td>
+                <td><input type="text" name="trongluong" /></td>
+            </tr>
+            <tr>
+                <td>ROM</td>
+                <td><input type="text" name="ROM" /></td>
+            </tr>
+            <tr>
+                <td>RAM</td>
+                <td><input type="text" name="RAM" /></td>
+            </tr>
+            <tr>
+                <td>thẻ nhớ</td>
+                <td><input type="text" name="thenho" /></td>
+            </tr>
+            <tr>
+                <td>camera trước</td>
+                <td><input type="text" name="camera_truoc" /></td>
+            </tr>
+            <tr>
+                <td>camera sau</td>
+                <td><input type="text" name="camera_sau" /></td>
+            </tr>
+            <tr>
+                <td>pin</td>
+                <td><input type="text" name="pin" /></td>
+            </tr>
+            <tr>
+                <td>Bảo hành</td>
+                <td><input type="text" name="baohanh" /></td>
+            </tr>
+            <tr>
+                <td>bluetooth</td>
+                <td><input type="text" name="bluetooth" /></td>
+            </tr>
+            <tr>
+                <td>Nhà Sản Xuất</td>
+                <td><input type="text" name="id_nsx" /></td>
+            </tr>
+            <tr>
+                <td>CPU</td>
+                <td><input type="text" name="CPU" /></td>
+            </tr>
+            <tr>
+                <td>Màn Hình</td>
+                <td><input type="text" name="manhinh" /></td>
+            </tr>
+            <tr>
+                <td>tình trạng</td>
+                <td><input type="text" name="tinhtrang" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Thêm" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <a href="~/Admin/Home/DienThoai">Trờ về</a>
+</div>
+
+

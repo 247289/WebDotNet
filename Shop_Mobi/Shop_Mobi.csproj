@@ -182,6 +182,7 @@
     <Compile Include="Areas\Admin\Models\Account.cs" />
     <Compile Include="Areas\Admin\Models\Crypt.cs" />
     <Compile Include="Areas\Admin\Models\Person.cs" />
+    <Compile Include="Areas\Admin\Models\Sanpham.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -334,9 +335,6 @@
     <Content Include="Areas\Admin\Views\Account\ConfirmMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\Views\Home\Sanpham.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Areas\Admin\Views\Home\Chitietdonhang.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -347,6 +345,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Home\khachhang.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Home\DienThoai.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Home\Tablet.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Home\PhuKien.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Home\KhuyenMai.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Home\themspmoi.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Home\suasp.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

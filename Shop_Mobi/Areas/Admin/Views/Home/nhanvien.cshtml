@@ -19,36 +19,36 @@
     {
         <tr>
             <td>@order</td>
-            <td>@person.tentaikhoan</td>
+            <td id="ttcn@(person.id_ttcn)">@person.tentaikhoan</td>
             <td>@person.quyen</td>
             <td>
                 <div class="custom-tooltip">
                     <div class="custom-tooltiptext">
-                        <table>
+                        <table stype="width:100%">
                             <tr>
                                 <th width="40%" style="text-align:center">Ảnh</th>
                                 <th width="60%" style="text-align:center">Thông tin cá nhân</th>
                             </tr>
                             <tr>
                                 <td><img src="@person.anhdaidien" /></td>
-                                <td style="text-align:left">
-                                    Họ tên: @person.hoten<br />
-                                    Ngày sinh: @Convert.ToDateTime(person.ngaysinh).ToShortDateString()<br />
-                                    Giới tính: @(person.gioitinh == true ? "Nam" : "Nữ")<br />
-                                    Địa chỉ: @person.diachi<br />
-                                    Số điện thoại: @("0" + person.sdt.ToString())<br />
-                                    Email: @person.email<br />
+                                <td id="ttcn-id@(person.id_ttcn)" style="text-align:left">
+                                    <p class="ttcn-hoten">Họ tên: <span>@person.hoten</span></p>
+                                    <p class="ttcn-ngaysinh">Ngày sinh: <span>@Convert.ToDateTime(person.ngaysinh).ToShortDateString()</span></p>
+                                    <p class="ttcn-gioitinh">Giới tính: <span>@(person.gioitinh == true ? "Nam" : "Nữ")</span></p>
+                                    <p class="ttcn-diachi">Địa chỉ: <span>@person.diachi</span></p>
+                                    <p class="ttcn-dienthoai">Số điện thoại: <span>@("0" + person.sdt.ToString())</span></p>
+                                    <p class="ttcn-email">Email: <span>@person.email</span></p>
                                 </td>
                             </tr>
                         </table>
                     </div>
-                    <a>@person.hoten</a>
+                    <a id="tt@(person.id_ttcn)" class="modal-toggle" href="#">@person.hoten</a>
                 </div>
             </td>
             <td>@(person.trangthai == true ? "kích hoạt" : "không kích hoạt")</td>
             <td><button>Sửa thông tin</button></td>
             <td><button>Khôi phục mật khẩu</button></td>
-            <td><button>Xóa tài khoản</button></td>
+            <td>@*<button>Xóa tài khoản</button>*@</td>
         </tr>
         order++;
     }

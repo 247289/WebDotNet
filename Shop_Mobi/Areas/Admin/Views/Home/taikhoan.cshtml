@@ -21,3 +21,74 @@
         </div>
     </div>
 </div>
+
+<div id="modal-container" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Thay đổi thông tin cá nhân</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="@Url.Action("thaydoithongtin", "Home")">
+                    <fieldset>
+                        <legend></legend>
+                        <input type="hidden" name="id" /><br />
+                        Họ tên: <input type="text" name="ten" /><br />
+                        Ngày sinh: <input type="text" name="ngaysinh" /><br />
+                        Giới tính: <input type="radio" name="gioitinh" value=1 />Nam
+                        <input type="radio" name="gioitinh" value=0 />Nữ<br />
+                        Địa chỉ: <input type="text" name="diachi" /><br />
+                        Điện thoại: <input type="number" name="sdt" /><br />
+                        Email: <input type="email" name="email" /><br />
+                        <input type="submit" value="Lưu Thay đổi" />
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.modal-toggle').click(function () {
+                var id = $(this).attr("id").substring(2);
+                var tk = $('#ttcn' + id).html();
+                var ten = $('#ttcn-id' + id + ' p.ttcn-hoten span').text();
+                var ngay = $('#ttcn-id' + id + ' p.ttcn-ngaysinh span').text();
+                var gt = $('#ttcn-id' + id + ' p.ttcn-gioitinh span').text();
+                var dc = $('#ttcn-id' + id + ' p.ttcn-diachi span').text();
+                var sdt = $('#ttcn-id' + id + ' p.ttcn-dienthoai span').text();
+                var mail = $('#ttcn-id' + id + ' p.ttcn-email span').text();
+
+
+
+                $('legend').append('Thông tin cá nhân tài khoản: ' + tk);
+                $('input[name="id"]').val(id);
+                $('input[name="ten"]').attr("placeholder", ten);
+                $('input[name="ngaysinh"]').attr("placeholder", ngay);
+                $('input[name="gioitinh"][value="' + (gt=='Nam' ? 1 : 0) + '"]').attr("checked", "true");
+                $('input[name="sdt"]').attr("placeholder", dc);
+                $('input[name="diachi"]').attr("placeholder", sdt);
+                $('input[name="email"]').attr("placeholder", mail);
+
+                $('#modal-container').modal('show');
+            });
+
+            $('#modal-container').on('hidden.hidden.bs.modal', function () {
+                $('legend').empty();
+                $('input[name="id"]').removeAttr("placeholder");
+                $('input[name="hoten"]').removeAttr("placeholder");
+                $('input[name="gioitinh"][checked="true"]').attr("checked", "false");
+                $('input[date="dienthoai"]').removeAttr("placeholder");
+                $('input[date="diachi"]').removeAttr("placeholder");
+                $('input[date="email"]').removeAttr("placeholder");
+            });
+
+        });
+    </script>
+}
